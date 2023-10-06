@@ -10,6 +10,8 @@ export const reducer = (state, action) => {
       return { count: state.count + 1 };
     case "DECREMENT":
       return { count: state.count - 1 };
+    case "RESET_BUTTON":
+      return { count: state.count = 0}
     case "TOGGLE_BUTTON":
       return { ...state, isToggleOpen: !state.isToggleOpen };
     case "BUTTON_ICON":

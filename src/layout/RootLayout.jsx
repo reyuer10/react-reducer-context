@@ -10,6 +10,8 @@ import {
   PiNotepadBold,
   PiNotepadFill,
   PiEqualsBold,
+  PiSquaresFourBold,
+  PiSquaresFourFill
 } from "react-icons/pi";
 import { AppContext } from "../AppContext";
 
@@ -55,6 +57,20 @@ export default function RootLayout() {
             <PiQuestionBold size={24} />
           )}
           About
+        </Link>
+        <Link
+          to="/applications"
+          className={`${
+            state.LinkName === "applications" ? "text-blue-700" : ""
+          } flex items-center text-xl`}
+          onClick={() => handleButtonChangeIcon("applications")}
+        >
+          {state.LinkName === "applications" ? (
+            <PiSquaresFourFill size={24} />
+          ) : (
+            <PiSquaresFourBold size={24} />
+          )}
+          Applications
         </Link>
         <Link
           className={`${
@@ -103,20 +119,44 @@ export default function RootLayout() {
           {isDashBoardClick ? (
             <>
               <div className="shadow-md absolute right-14 top-5 bg-white rounded-2xl">
-                <div className="flex flex-col text-left space-y-2 w-[240px] p-7">
-                  <Link className="flex hover:bg-gray-300 py-1 rounded-lg text-xl">
+                <div className="flex flex-col text-left space-y-2 w-[300px] p-7">
+                  <Link
+                    to="/"
+                    onClick={() => setisDashBoardClick(!isDashBoardClick)}
+                    className="flex hover:bg-gray-300 py-1 rounded-lg text-xl"
+                  >
                     <PiHouseBold size={24} className="mx-2" />
                     Home
                   </Link>
-                  <Link className="flex hover:bg-gray-300 py-1 rounded-lg text-xl">
+                  <Link
+                    to="/about"
+                    onClick={() => setisDashBoardClick(!isDashBoardClick)}
+                    className="flex hover:bg-gray-300 py-1 rounded-lg text-xl"
+                  >
                     <PiQuestionBold size={24} className="mx-2" />
                     About
                   </Link>
-                  <Link className="flex hover:bg-gray-300 py-1 rounded-lg text-xl">
+                  <Link
+                    to="/applications"
+                    onClick={() => setisDashBoardClick(!isDashBoardClick)}
+                    className="flex hover:bg-gray-300 py-1 rounded-lg text-xl"
+                  >
+                    <PiSquaresFourBold size={24} className="mx-2" />
+                    Applications
+                  </Link>
+                  <Link
+                    to="/count"
+                    onClick={() => setisDashBoardClick(!isDashBoardClick)}
+                    className="flex hover:bg-gray-300 py-1 rounded-lg text-xl"
+                  >
                     <PiNumberCircleOneBold size={24} className="mx-2" />
                     Count
                   </Link>
-                  <Link className="flex hover:bg-gray-300 py-1 rounded-lg text-xl">
+                  <Link
+                    to="/todo"
+                    onClick={() => setisDashBoardClick(!isDashBoardClick)}
+                    className="flex hover:bg-gray-300 py-1 rounded-lg text-xl"
+                  >
                     <PiNotepadBold size={24} className="mx-2" />
                     Todo
                   </Link>
