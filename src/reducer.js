@@ -15,7 +15,7 @@ export const reducer = (state, action) => {
     case "BUTTON_ICON":
       return {
         ...state,
-        LinkName: action.item
+        LinkName: action.item,
       };
     default:
       return state;

@@ -15,7 +15,7 @@ export default function About() {
         <p className="font-bold text-gray-400">Mixed simple applications created</p>
         <p className="text-gray-700 font-bold">My Objective: </p>
         <ul>
-          <li>Create apps that with using useReducer & useContext</li>
+          <li>Create apps with the use of useReducer & useContext</li>
         </ul>
       </div>
     </div>

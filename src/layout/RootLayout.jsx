@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import {
   PiHouseBold,
@@ -9,11 +9,17 @@ import {
   PiNumberCircleOneFill,
   PiNotepadBold,
   PiNotepadFill,
+  PiEqualsBold,
 } from "react-icons/pi";
 import { AppContext } from "../AppContext";
 
 export default function RootLayout() {
   const { state, dispatch } = useContext(AppContext);
+  const [isDashBoardClick, setisDashBoardClick] = useState(false);
+
+  const handleDashBoardClick = () => {
+    setisDashBoardClick(!isDashBoardClick);
+  };
 
   const handleButtonChangeIcon = (item) => {
     dispatch({ type: "BUTTON_ICON", item });
@@ -88,7 +94,38 @@ export default function RootLayout() {
         <div>
           <p className="font-bold text-4xl">Logo</p>
         </div>
-        <div className="space-x-10 flex">
+        <div className="md:hidden">
+          <PiEqualsBold
+            onClick={() => handleDashBoardClick()}
+            className="cursor-pointer hover:text-gray-500 transition-all ease-in-out"
+            size={24}
+          />
+          {isDashBoardClick ? (
+            <>
+              <div className="shadow-md absolute right-14 top-5 bg-white rounded-2xl">
+                <div className="flex flex-col text-left space-y-2 w-[240px] p-7">
+                  <Link className="flex hover:bg-gray-300 py-1 rounded-lg text-xl">
+                    <PiHouseBold size={24} className="mx-2" />
+                    Home
+                  </Link>
+                  <Link className="flex hover:bg-gray-300 py-1 rounded-lg text-xl">
+                    <PiQuestionBold size={24} className="mx-2" />
+                    About
+                  </Link>
+                  <Link className="flex hover:bg-gray-300 py-1 rounded-lg text-xl">
+                    <PiNumberCircleOneBold size={24} className="mx-2" />
+                    Count
+                  </Link>
+                  <Link className="flex hover:bg-gray-300 py-1 rounded-lg text-xl">
+                    <PiNotepadBold size={24} className="mx-2" />
+                    Todo
+                  </Link>
+                </div>
+              </div>
+            </>
+          ) : null}
+        </div>
+        <div className={`space-x-10 flex max-md:hidden`}>
           <LinkComponent />
         </div>
       </div>
