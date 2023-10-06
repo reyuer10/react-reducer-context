@@ -8,7 +8,7 @@ import {
   PiNumberCircleOneBold,
   PiNumberCircleOneFill,
   PiNotepadBold,
-  PiNotepadFill
+  PiNotepadFill,
 } from "react-icons/pi";
 import { AppContext } from "../AppContext";
 
@@ -84,7 +84,7 @@ export default function RootLayout() {
 
   return (
     <div className="font-mono">
-      <div className="flex justify-between items-center p-6 shadow-sm">
+      <div className="flex justify-between items-center p-6 shadow-md">
         <div>
           <p className="font-bold text-4xl">Logo</p>
         </div>
