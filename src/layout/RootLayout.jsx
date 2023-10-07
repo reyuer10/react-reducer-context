@@ -5,10 +5,6 @@ import {
   PiHouseFill,
   PiQuestionBold,
   PiQuestionFill,
-  PiNumberCircleOneBold,
-  PiNumberCircleOneFill,
-  PiNotepadBold,
-  PiNotepadFill,
   PiEqualsBold,
   PiSquaresFourBold,
   PiSquaresFourFill
@@ -72,34 +68,6 @@ export default function RootLayout() {
           )}
           Applications
         </Link>
-        <Link
-          className={`${
-            state.LinkName === "Count" ? "text-blue-700" : ""
-          } flex items-center text-xl`}
-          onClick={() => handleButtonChangeIcon("Count")}
-          to="/count"
-        >
-          {state.LinkName === "Count" ? (
-            <PiNumberCircleOneFill size={24} />
-          ) : (
-            <PiNumberCircleOneBold size={24} />
-          )}
-          Count
-        </Link>
-        <Link
-          className={`${
-            state.LinkName === "Todo" ? "text-blue-700" : ""
-          } flex items-center text-xl`}
-          onClick={() => handleButtonChangeIcon("Todo")}
-          to="/todo"
-        >
-          {state.LinkName === "Todo" ? (
-            <PiNotepadFill size={24} />
-          ) : (
-            <PiNotepadBold size={24} />
-          )}
-          Todo
-        </Link>
       </>
     );
   };
@@ -143,22 +111,6 @@ export default function RootLayout() {
                   >
                     <PiSquaresFourBold size={24} className="mx-2" />
                     Applications
-                  </Link>
-                  <Link
-                    to="/count"
-                    onClick={() => setisDashBoardClick(!isDashBoardClick)}
-                    className="flex hover:bg-gray-300 py-1 rounded-lg text-xl"
-                  >
-                    <PiNumberCircleOneBold size={24} className="mx-2" />
-                    Count
-                  </Link>
-                  <Link
-                    to="/todo"
-                    onClick={() => setisDashBoardClick(!isDashBoardClick)}
-                    className="flex hover:bg-gray-300 py-1 rounded-lg text-xl"
-                  >
-                    <PiNotepadBold size={24} className="mx-2" />
-                    Todo
                   </Link>
                 </div>
               </div>
