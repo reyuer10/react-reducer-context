@@ -9,11 +9,11 @@ export const initialState = {
 export const reducer = (state, action) => {
   switch (action.type) {
     case "INCREMENT":
-      return { count: state.count + 1 };
+      return { ...state, count: state.count + 1 };
     case "DECREMENT":
-      return { count: state.count - 1 };
+      return { ...state, count: state.count - 1 };
     case "RESET_BUTTON":
-      return {...state, count: 0};
+      return { ...state, count: 0 };
     case "TOGGLE_BUTTON":
       return { ...state, isToggleOpen: !state.isToggleOpen };
     case "BUTTON_ICON":
@@ -24,8 +24,30 @@ export const reducer = (state, action) => {
     case "BUTTON_DARK_TOGGLE":
       return { ...state, isButtonClick: !state.isButtonClick };
     case "ADD_TODO":
-      return { ...state, todoList: [...state.todoList, action.value] };
+      const todos = {
+        newValue: action.value,
+        id:
+          state.todoList.length === 0
+            ? 1
+            : state.todoList[state.todoList.length - 1].id + 1,
+        completed: false,
+      };
+      return { ...state, todoList: [...state.todoList, todos] };
+    case "TOGGLE_TODO":
+      return {
+        ...state,
+        todoList: state.todoList.map((todos) =>
+          todos.id === action.id
+            ? { ...todos, completed: !todos.completed }
+            : todos
+        ),
+      };
+    case "DELETE_TODO":
+      return {
+        ...state, todoList: state.todoList.filter(todos => todos.id !== action.id)
+      }
     default:
       return state;
   }
 };
+ 
