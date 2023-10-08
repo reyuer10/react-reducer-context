@@ -4,6 +4,7 @@ export const initialState = {
   LinkName: null,
   isButtonClick: false,
   todoList: [],
+  isGameStart: false,
 };
 
 export const reducer = (state, action) => {
@@ -45,6 +46,10 @@ export const reducer = (state, action) => {
     case "DELETE_TODO":
       return {
         ...state, todoList: state.todoList.filter(todos => todos.id !== action.id)
+      }
+    case "START_GAME":
+      return {
+        ...state, isGameStart: !state.isGameStart,
       }
     default:
       return state;

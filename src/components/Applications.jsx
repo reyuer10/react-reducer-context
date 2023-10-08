@@ -1,7 +1,10 @@
 import React from "react";
+
+// components
 import Todo from "../apps/Todo";
 import Count from "../apps/Count";
 import DarkMode from "../apps/DarkMode";
+import NumberGuessingGame from "../apps/NumberGuessingGame";
 
 export default function Applications() {
   return (
@@ -10,6 +13,7 @@ export default function Applications() {
         <Count />
         <DarkMode />
         <Todo />
+        <NumberGuessingGame />
       </div>
     </div>
   );
