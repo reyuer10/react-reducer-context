@@ -5,10 +5,12 @@ import DarkMode from "../apps/DarkMode";
 
 export default function Applications() {
   return (
-    <div className="md:flex max-md:m-auto m-8 space-x-10 max-md:space-y-16 max-md:my-16 max-md:w-[400px]">
-      <Count />
-      <DarkMode />
-      <Todo />
+    <div className="m-8 space-x-10">
+      <div className="max-md:mx-auto max-md:w-max md:flex md:flex-grow md:flex-wrap basis-30 gap-x-10 max-xl:space-y-10">
+        <Count />
+        <DarkMode />
+        <Todo />
+      </div>
     </div>
   );
 }
