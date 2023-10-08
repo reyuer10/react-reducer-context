@@ -3,6 +3,7 @@ import { AppContext } from "../AppContext";
 
 export default function Count() {
   const { state, dispatch } = useContext(AppContext);
+
   return (
     <div className="font-mono flex flex-col justify-center shadow-md p-5 rounded-xl w-[350px]">
       <div className="flex justify-between items-center">

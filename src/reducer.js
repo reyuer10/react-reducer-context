@@ -3,6 +3,7 @@ export const initialState = {
   isToggleOpen: false,
   LinkName: null,
   isButtonClick: false,
+  todoList: [],
 };
 
 export const reducer = (state, action) => {
@@ -12,7 +13,7 @@ export const reducer = (state, action) => {
     case "DECREMENT":
       return { count: state.count - 1 };
     case "RESET_BUTTON":
-      return { count: (state.count = 0) };
+      return {...state, count: 0};
     case "TOGGLE_BUTTON":
       return { ...state, isToggleOpen: !state.isToggleOpen };
     case "BUTTON_ICON":
@@ -22,6 +23,8 @@ export const reducer = (state, action) => {
       };
     case "BUTTON_DARK_TOGGLE":
       return { ...state, isButtonClick: !state.isButtonClick };
+    case "ADD_TODO":
+      return { ...state, todoList: [...state.todoList, action.value] };
     default:
       return state;
   }
