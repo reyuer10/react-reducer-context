@@ -15,22 +15,23 @@ export default function NumberGuessingGame() {
   // tactic:
   // using if else condition for the algorithm;
 
+  const generateRandomNumber = () => {
+    return Math.floor(Math.random() * 100);
+  };
+  const generateNewNumber = generateRandomNumber();
   const [hintText, setHinText] = useState("");
   const [guessingText, setGuessingText] = useState(0);
   const [attempt, setAttempt] = useState(0);
-  const [guessNumber, setGuessNumber] = useState(
-    Math.floor(Math.random() * 100)
-  );
+  const [guessNumber, setGuessNumber] = useState(generateRandomNumber());
   const [isGuessCorrect, setIsGuessCorrect] = useState(false);
   const [isUserGiveUp, setIsUserGiveUp] = useState(false);
 
-  useEffect(() => {
-    console.log(guessNumber);
-  }, []);
+  // useEffect(() => {
+  //   console.log(guessNumber);
+  // }, []);
 
   const handleSubmit = (guessNum) => {
-    console.log(guessNum);
-    if (guessingText === 0) {
+    if(guessingText === 0) {
       setHinText("Pick a number");
     } else if (guessingText > guessNum) {
       setAttempt((att) => att + 1);
@@ -43,6 +44,7 @@ export default function NumberGuessingGame() {
       setAttempt((att) => att + 1);
       setIsGuessCorrect(!isGuessCorrect);
     }
+
   };
 
   const handleGiveUp = () => {
@@ -51,14 +53,15 @@ export default function NumberGuessingGame() {
   };
 
   const startGame = () => {
+    console.log(generateNewNumber);
     if (!state.isGameStart) {
+      setGuessNumber(generateNewNumber);
       setGuessingText(0);
       setAttempt(0);
       handleSubmit();
-      console.log(guessNumber);
+      setIsUserGiveUp(false);
+      setIsGuessCorrect(false);
     }
-    setIsUserGiveUp(false);
-    setIsGuessCorrect(false);
     dispatch({ type: "START_GAME" });
   };
 

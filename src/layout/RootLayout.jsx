@@ -30,7 +30,7 @@ export default function RootLayout() {
           to="/"
           className={`${
             state.LinkName === "Home" ? "text-blue-700" : ""
-          } flex items-center text-xl`}
+          } flex items-center text-lg font-medium`}
           onClick={() => handleButtonChangeIcon("Home")}
         >
           {state.LinkName === "Home" ? (
@@ -44,7 +44,7 @@ export default function RootLayout() {
           to="/about"
           className={`${
             state.LinkName === "About" ? "text-blue-700" : ""
-          } flex items-center text-xl`}
+          } flex items-center font-medium`}
           onClick={() => handleButtonChangeIcon("About")}
         >
           {state.LinkName === "About" ? (
@@ -58,7 +58,7 @@ export default function RootLayout() {
           to="/applications"
           className={`${
             state.LinkName === "applications" ? "text-blue-700" : ""
-          } flex items-center text-xl`}
+          } flex items-center font-medium`}
           onClick={() => handleButtonChangeIcon("applications")}
         >
           {state.LinkName === "applications" ? (
@@ -76,7 +76,7 @@ export default function RootLayout() {
     <div className="font-mono">
       <div className="flex justify-between items-center p-6 shadow-md">
         <div>
-          <p className="font-bold text-4xl">Logo</p>
+          <p className="font-bold text-xl">Logo</p>
         </div>
         <div className="md:hidden">
           <PiEqualsBold
