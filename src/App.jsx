@@ -8,6 +8,8 @@ import Home from "./components/Home";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
 import Applications from "./components/Applications";
+import GuessNumberField from "./apps/GuessNumberField";
+import CatsFacts from "./apps/CatsFacts";
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/applications" element={<Applications />} />
+          <Route path="/guessnumberfield" element={<GuessNumberField />} />
+          <Route path="/catfacts" element={<CatsFacts />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

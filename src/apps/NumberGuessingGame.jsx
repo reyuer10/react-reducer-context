@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../AppContext";
+import GuessNumberField from "./GuessNumberField";
+import { useNavigate } from "react-router-dom";
 
 export default function NumberGuessingGame() {
+  const navigation = useNavigate();
   const { state, dispatch } = useContext(AppContext);
 
   // randomGuess = math.floor(math.random() * 100);
@@ -30,8 +33,16 @@ export default function NumberGuessingGame() {
   //   console.log(guessNumber);
   // }, []);
 
+  // useEffect(() => {
+  //   handleSubmit();
+  // }, [])
+  const handleMainMenu = () => {
+    setGuessingText(0);
+    dispatch({ type: "START_GAME" });
+  };
+
   const handleSubmit = (guessNum) => {
-    if(guessingText === 0) {
+    if (guessingText === 0) {
       setHinText("Pick a number");
     } else if (guessingText > guessNum) {
       setAttempt((att) => att + 1);
@@ -41,15 +52,25 @@ export default function NumberGuessingGame() {
       setHinText("Too low");
     } else {
       setHinText(`Congratulations! the guess number is ${guessNum}`);
+
       setAttempt((att) => att + 1);
       setIsGuessCorrect(!isGuessCorrect);
     }
-
   };
 
   const handleGiveUp = () => {
     setHinText(`The guess number is`);
     setIsUserGiveUp(!isUserGiveUp);
+  };
+
+  const handleAnotherGuess = () => {
+    console.log(generateNewNumber);
+    setGuessNumber(generateNewNumber);
+    setIsUserGiveUp(false);
+    setIsGuessCorrect(false);
+    setHinText("Pick a number");
+    setAttempt(0);
+    setGuessingText(0);
   };
 
   const startGame = () => {
@@ -84,48 +105,15 @@ export default function NumberGuessingGame() {
           </>
         ) : (
           <>
-            <div>
-              <div>
-                <input
-                  className={`${
-                    isUserGiveUp ? "text-red-500" : ""
-                  } text-center text-xl p-5`}
-                  value={hintText}
-                  disabled={true}
-                  type="text"
-                />
-              </div>
-              <div className="flex items-center justify-center gap-x-5">
-                {!isUserGiveUp ? (
-                  <>
-                    <input
-                      value={guessingText}
-                      onChange={(e) => setGuessingText(e.target.value)}
-                      name="guessingText"
-                      type="number"
-                      className={`rounded-xl p-1 text-center text-xl shadow-md ring-1 ring-slate-300 w-[100px] outline-none text-[#303030]`}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <input
-                      disabled
-                      type="text"
-                      className={`rounded-xl p-1 text-center text-xl shadow-md ring-1 ring-slate-300 w-[100px] outline-none text-[#303030]`}
-                      value={guessNumber}
-                    />
-                  </>
-                )}
-                {!isGuessCorrect && !isUserGiveUp && (
-                  <button
-                    onClick={() => handleSubmit(guessNumber)}
-                    className="px-4 py-2 rounded-xl shadow-md font-bold"
-                  >
-                    Submit
-                  </button>
-                )}
-              </div>
-            </div>
+            <GuessNumberField
+              isUserGiveUp={isUserGiveUp}
+              guessingText={guessingText}
+              hintText={hintText}
+              guessNumber={guessNumber}
+              isGuessCorrect={isGuessCorrect}
+              setGuessingText={setGuessingText}
+              handleSubmit={handleSubmit}
+            />
           </>
         )}
       </div>
@@ -134,7 +122,7 @@ export default function NumberGuessingGame() {
           {isGuessCorrect ? (
             <>
               <button
-                onClick={() => startGame()}
+                onClick={handleAnotherGuess}
                 className="font-bold px-4 py-2 rounded-full  bg-amber-400 shadow-md text-slate-700"
               >
                 Another guess
@@ -152,7 +140,7 @@ export default function NumberGuessingGame() {
               ) : (
                 <>
                   <button
-                    onClick={() => dispatch({ type: "START_GAME" })}
+                    onClick={handleMainMenu}
                     className="font-bold px-4 py-2 rounded-full  bg-amber-400 shadow-md text-slate-700"
                   >
                     Main menu

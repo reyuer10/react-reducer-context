@@ -6,6 +6,8 @@ import Count from "../apps/Count";
 import DarkMode from "../apps/DarkMode";
 import NumberGuessingGame from "../apps/NumberGuessingGame";
 import Calculator from "../apps/calculator";
+import CatsFacts from "../apps/CatsFacts";
+import BmiCalculator from "../apps/BmiCalculator";
 
 export default function Applications() {
   return (
@@ -15,6 +17,8 @@ export default function Applications() {
         <DarkMode />
         <Todo />
         <NumberGuessingGame />
+        <CatsFacts />
+        <BmiCalculator />
         {/* <Calculator /> */}
       </div>
     </div>

@@ -46,9 +46,9 @@ export default function Todo() {
       <div>
         {state.todoList.map((todos, index) => (
           <div className="flex justify-between px-5" key={todos.id}>
-            <div className={`${todos.completed ? "line-through decoration-2 text-gray-300" : ""} flex`}>
+            <div className={`${todos.completed ? "line-through decoration-2 text-gray-200" : ""} flex`}>
               <p className="text-slate-600">{todos.id}</p>
-              <p className={`${todos.completed ? "text-gray-300" : ""} text-slate-700 font-bold`}>
+              <p className={`${todos.completed ? "text-gray-200 " : "text-slate-700"}  font-bold`}>
                 {`. ` + todos.newValue}
               </p>
             </div>
