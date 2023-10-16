@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
 import GuessNumberField from "./GuessNumberField";
-import { useNavigate } from "react-router-dom";
+import GuessNumberButtonField from "./GuessNumberButtonField";
 
 export default function NumberGuessingGame() {
-  const navigation = useNavigate();
   const { state, dispatch } = useContext(AppContext);
 
   // randomGuess = math.floor(math.random() * 100);
@@ -29,13 +28,6 @@ export default function NumberGuessingGame() {
   const [isGuessCorrect, setIsGuessCorrect] = useState(false);
   const [isUserGiveUp, setIsUserGiveUp] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(guessNumber);
-  // }, []);
-
-  // useEffect(() => {
-  //   handleSubmit();
-  // }, [])
   const handleMainMenu = () => {
     setGuessingText(0);
     dispatch({ type: "START_GAME" });
@@ -118,44 +110,14 @@ export default function NumberGuessingGame() {
         )}
       </div>
       {state.isGameStart && (
-        <div className="flex items-center justify-evenly">
-          {isGuessCorrect ? (
-            <>
-              <button
-                onClick={handleAnotherGuess}
-                className="font-bold px-4 py-2 rounded-full  bg-amber-400 shadow-md text-slate-700"
-              >
-                Another guess
-              </button>
-            </>
-          ) : (
-            <>
-              {!isUserGiveUp ? (
-                <button
-                  onClick={handleGiveUp}
-                  className="font-bold px-4 py-2 rounded-full  bg-amber-400 shadow-md text-slate-700"
-                >
-                  Give up
-                </button>
-              ) : (
-                <>
-                  <button
-                    onClick={handleMainMenu}
-                    className="font-bold px-4 py-2 rounded-full  bg-amber-400 shadow-md text-slate-700"
-                  >
-                    Main menu
-                  </button>
-                </>
-              )}
-            </>
-          )}
-          <input
-            className="shadow-md rounded-full w-[130px] py-2 text-center font-bold text-slate-500"
-            type="text"
-            disabled
-            value={`Attempt: ${attempt}`}
-          />
-        </div>
+        <GuessNumberButtonField
+          isGuessCorrect={isGuessCorrect}
+          handleAnotherGuess={handleAnotherGuess}
+          isUserGiveUp={isUserGiveUp}
+          handleGiveUp={handleGiveUp}
+          handleMainMenu={handleMainMenu}
+          attempt={attempt}
+        />
       )}
     </div>
   );
