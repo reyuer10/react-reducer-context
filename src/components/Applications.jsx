@@ -8,6 +8,7 @@ import NumberGuessingGame from "../apps/NumberGuessingGame";
 import Calculator from "../apps/calculator";
 import CatsFacts from "../apps/CatsFacts";
 import BmiCalculator from "../apps/BmiCalculator";
+import CalculatorTip from "../apps/CalculatorTip";
 
 export default function Applications() {
   return (
@@ -19,7 +20,7 @@ export default function Applications() {
         <NumberGuessingGame />
         <CatsFacts />
         <BmiCalculator />
-        {/* <Calculator /> */}
+        <CalculatorTip />
       </div>
     </div>
   );

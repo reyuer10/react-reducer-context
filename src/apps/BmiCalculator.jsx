@@ -39,14 +39,7 @@ export default function BmiCalculator() {
       <div>
         <p className="text-center text-xl font-md">BMI Calculator</p>
       </div>
-      <div className="flex items-center">
-        <label>Units</label>
-        <select className="w-full mx-3 rounded-lg shadow-md p-2">
-          <option value="choose">Standard</option>
-          <option value="choose">Metric</option>
-        </select>
-      </div>
-      <div className="rounded-xl p-2 bg-slate-100 space-y-7">
+      <div className="rounded-xl p-2 bg-slate-100 space-y-3">
         <div className="space-y-2 py-3">
           <div className="flex justify-evenly items-center">
             <input
@@ -54,7 +47,7 @@ export default function BmiCalculator() {
               value={heightFt}
               id="heightFt"
               name="heightFt"
-              className="p-1 rounded-lg text-center"
+              className="p-1 rounded-lg text-center shadow-md"
               type="number"
               placeholder="Height"
             />
@@ -66,7 +59,7 @@ export default function BmiCalculator() {
               value={heightIn}
               id="heightIn"
               name="heightIn"
-              className="p-1 rounded-lg text-center"
+              className="p-1 rounded-lg text-center shadow-md"
               type="number"
               placeholder="Height"
             />
@@ -79,22 +72,28 @@ export default function BmiCalculator() {
             id="weight"
             name="weight"
             value={weight}
-            className="p-1 rounded-lg text-center"
+            className="p-1 rounded-lg text-center shadow-md"
             type="number"
             placeholder="Weight"
           />
           <label className="font-semibold text-slate-500">Pounds</label>
         </div>
         <div className="flex justify-evenly">
-          <button onClick={handleCalculate}>Calculate</button>
-          <input className="text-center" type="text" value={bmiResults} />
+          <button 
+          className="px-4 py-2 rounded-xl shadow-md bg-white font-bold text-slate-500"
+          onClick={handleCalculate}>Calculate</button>
+          <input
+            className="text-center shadow-md rounded-lg w-[150px]"
+            type="text"
+            value={bmiResults}
+          />
         </div>
         <div
           className={`${
             (bmiResultsString === "Under weight" && "bg-amber-300") ||
             (bmiResultsString === "Normal weight" && "bg-green-400") ||
-            (bmiResultsString === "Normal weight" && "bg-amber-400") ||
-            (bmiResultsString === "Obese" && "bg-amber-400")
+            (bmiResultsString === "Overweight" && "bg-amber-400") ||
+            (bmiResultsString === "Obese" && "bg-red-400")
           } text-center rounded-lg p-1 font-semibold text-slate-100`}
         >
           {bmiResultsString}
